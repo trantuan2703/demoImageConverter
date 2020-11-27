@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">DemoImagesConveter</string>
+    <string name="open_video_gallery">Open Video Gallery</string>
+    <string name="gallery">Gallery</string>
+    <string name="video_name">video name</string>
+    <string name="_00_05">00:05</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="QuickCapture">Quick Capture</string>
+    <string name="Automatically">automaticaally</string>
+    <string name="name">name</string>
+    <string name="ic_folder">ic_folder</string>
+    <string name="choose_video_folder">Choose Video Folder</string>
+    <string name="title_activity_choose_video">ChooseVideoActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="choose_video">Choose Video</string>
+    <string name="demo_duration">00:05</string>
+    <string name="title">title</string>
+    <string name="capture_images_from_video">Capture Images From Video</string>
+    <string name="slide_show">Making slideshow</string>
+    <string name="setting">Setting</string>
+</resources>
