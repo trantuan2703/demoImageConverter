@@ -1,4 +1,4 @@
-package com.example.demoimagesconveter.view;
+package com.example.demoimagesconveter.view.Capture;
 
 import android.content.Intent;
 import android.media.MediaMetadataRetriever;

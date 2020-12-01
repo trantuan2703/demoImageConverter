@@ -1,4 +1,4 @@
-package com.example.demoimagesconveter.view;
+package com.example.demoimagesconveter.view.Capture;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,6 +14,7 @@ import com.example.demoimagesconveter.R;
 import com.example.demoimagesconveter.adapter.FolderAdapter;
 import com.example.demoimagesconveter.common.BaseActivity;
 import com.example.demoimagesconveter.model.modelFolder;
+import com.example.demoimagesconveter.view.MainActivity;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class OpenVideoFolders extends BaseActivity implements FolderAdapter.onFo
 
     private void registerevent() {
         imvBack.setOnClickListener(view -> {
-            Intent intent = new Intent(OpenVideoFolders.this,MainActivity.class);
+            Intent intent = new Intent(OpenVideoFolders.this, MainActivity.class);
             startActivity(intent);
         });
     }

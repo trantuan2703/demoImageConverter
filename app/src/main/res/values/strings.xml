@@ -12,10 +12,7 @@
     <string name="ic_folder">ic_folder</string>
     <string name="choose_video_folder">Choose Video Folder</string>
     <string name="title_activity_choose_video">ChooseVideoActivity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
+
     <string name="hello_world">Hello Square World!</string>
     <string name="choose_video">Choose Video</string>
     <string name="demo_duration">00:05</string>
@@ -23,4 +20,20 @@
     <string name="capture_images_from_video">Capture Images From Video</string>
     <string name="slide_show">Making slideshow</string>
     <string name="setting">Setting</string>
+    <string name="file_format">File Format</string>
+    <string name="JPG">JPEG</string>
+    <string name="high">High</string>
+    <string name="Quality">Quality</string>
+    <string name="Size">Size</string>
+    <string name="_1x">1x</string>
+    <string name="PNG">PNG</string>
+    <string name="save">save</string>
+    <string name="Best">Best</string>
+    <string name="very_high">Very High</string>
+    <string name="medium">Medium</string>
+    <string name="low">Low</string>
+    <string name="_0_5x">0.5x</string>
+    <string name="_1_5x">1.5x</string>
+    <string name="_2x">2x</string>
+    <string name="_3x">3x</string>
 </resources>

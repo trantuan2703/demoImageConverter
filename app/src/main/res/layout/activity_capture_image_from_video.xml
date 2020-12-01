@@ -1,9 +1,10 @@
-<LinearLayout
-    android:layout_height="match_parent"
+<RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ab_capture_image_from_video"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.appcompat.widget.Toolbar
@@ -32,12 +33,9 @@
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tl_capture_image_from_video"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
-    </com.google.android.material.tabs.TabLayout>
     <FrameLayout
+        android:id="@+id/fr_videoview"
+        android:layout_below="@id/ab_capture_image_from_video"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <VideoView
@@ -48,9 +46,24 @@
             android:layout_height="200dp">
         </VideoView>
     </FrameLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_capture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:fabCustomSize="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="25dp"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/blue_2"
+        android:src="@drawable/ic_take_photo"
+        app:tint="@android:color/white">
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
     <androidx.viewpager.widget.ViewPager
+        android:layout_below="@id/fr_videoview"
         android:id="@+id/vp_capture_image_from_video"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
     </androidx.viewpager.widget.ViewPager>
-</LinearLayout>
+</RelativeLayout>
