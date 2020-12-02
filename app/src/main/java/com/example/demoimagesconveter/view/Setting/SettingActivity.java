@@ -170,7 +170,7 @@ public class SettingActivity extends BaseActivity {
         yourTypeFormat=preferences.getString(KEY_SHARED_PREFERENCE_TYPE_FORMAT,"JPEG");
         yourQuality =preferences.getString(KEY_SHARED_PREFERENCE_QUALITY,"High");
         yourSize = preferences.getString(KEY_SHARED_PREFERENCE_SIZE,"1x");
-        Log.d("TEST_SP","type: "+yourTypeFormat+"-quality: "+ yourQuality+"-size: ");
+        Log.d("TEST_SP","type: "+yourTypeFormat+"-quality: "+ yourQuality+"-size: "+yourSize);
         tvFileFormat.setText(yourTypeFormat);
         tvQuality.setText(yourQuality);
         tvSize.setText(yourSize);
@@ -183,5 +183,6 @@ public class SettingActivity extends BaseActivity {
         dialog.dismiss();
         textView.setText(value);
         showtoast("Changing successfully!");
+        Log.d("TEST_SP","type: "+yourTypeFormat+"-quality: "+ yourQuality+"-size: "+yourSize);
     }
 }
