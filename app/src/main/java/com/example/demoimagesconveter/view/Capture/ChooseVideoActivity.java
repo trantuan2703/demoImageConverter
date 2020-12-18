@@ -2,10 +2,8 @@ package com.example.demoimagesconveter.view.Capture;
 
 import android.content.Intent;
 import android.media.MediaMetadataRetriever;
-import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -15,7 +13,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.example.demoimagesconveter.R;
 import com.example.demoimagesconveter.adapter.VideoAdapter;
 import com.example.demoimagesconveter.common.BaseActivity;
-import com.example.demoimagesconveter.model.modelVideo;
+import com.example.demoimagesconveter.model.ModelVideo;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ public class ChooseVideoActivity extends BaseActivity implements VideoAdapter.on
     public static final String KEY_GET_VIDEO_FOLDER_PATH="videofolderpath";
     ImageView imvBack;
     RecyclerView rvVideos;
-    ArrayList<modelVideo> videos;
+    ArrayList<ModelVideo> videos;
     String folderPath="";
 
     @Override
@@ -36,10 +34,7 @@ public class ChooseVideoActivity extends BaseActivity implements VideoAdapter.on
     }
 
     private void registerevent() {
-        imvBack.setOnClickListener(view -> {
-            Intent intent = new Intent(ChooseVideoActivity.this,OpenVideoFolders.class);
-            startActivity(intent);
-        });
+        imvBack.setOnClickListener(view -> finish());
     }
 
     private void init() {
@@ -63,14 +58,14 @@ public class ChooseVideoActivity extends BaseActivity implements VideoAdapter.on
         if (files!=null){
             for (File file : files){
                 if (file.getName().contains(".mp4")){
-                    modelVideo modelVideo = new modelVideo();
+                    ModelVideo modelVideo = new ModelVideo();
                     modelVideo.setTitle(file.getName());
                     modelVideo.setPath(file.getAbsolutePath());
-                    modelVideo.setThumbNail(ThumbnailUtils.createVideoThumbnail(String.valueOf(file.getAbsoluteFile()), MediaStore.Images.Thumbnails.MINI_KIND));
                     MediaMetadataRetriever retriever = new MediaMetadataRetriever();
                     retriever.setDataSource(this, Uri.fromFile(new File(modelVideo.getPath())));
                     String time = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
                     modelVideo.setDuration(time);
+                    modelVideo.setShowDuration(DisplayDuration(time));
                     videos.add(modelVideo);
                 }
             }
@@ -78,16 +73,37 @@ public class ChooseVideoActivity extends BaseActivity implements VideoAdapter.on
         for (int i = 0; i < videos.size(); i++) {
             Log.d("TEST_GET_VIDEO",videos.get(i).getTitle()+
                     " and path: "+videos.get(i).getPath()+
-                    "and bitmap: "+videos.get(i).getThumbNail().toString()+
                     "and time: "+videos.get(i).getDuration());
         }
+    }
+
+    private String DisplayDuration(String duration) {
+        int sec = Integer.parseInt(duration)/1000;
+        String dispSec="";
+        String dispMin="";
+        if (sec<10){
+            dispMin="00";
+            dispSec="0"+sec;
+        }else if(sec<60){
+            dispMin="00";
+            dispSec=""+sec;
+        }else{
+            int min = sec/60;
+            sec%=60;
+            if (min<10){
+                dispMin="0"+min;
+            }
+            if (sec<10){
+                dispSec="0"+sec;
+            }
+        }
+        return dispMin+":"+dispSec;
     }
 
     @Override
     public void onClick(int pos) {
         Intent intent = new Intent(ChooseVideoActivity.this,CaptureImageFromVideo.class);
-        intent.putExtra(CaptureImageFromVideo.KEY_GET_VIDEO,videos.get(pos).getPath());
-        intent.putExtra(CaptureImageFromVideo.KEY_GET_BACK_FOLDER,folderPath);
+        intent.putExtra(CaptureImageFromVideo.KEY_GET_VIDEO,videos.get(pos));
         startActivity(intent);
     }
 }

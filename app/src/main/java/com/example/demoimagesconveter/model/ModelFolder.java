@@ -1,11 +1,11 @@
 package com.example.demoimagesconveter.model;
 
-public class modelFolder {
+public class ModelFolder {
     private String path;
     private String name;
     private int count;
 
-    public modelFolder() {
+    public ModelFolder() {
     }
 
     public int getCount() {

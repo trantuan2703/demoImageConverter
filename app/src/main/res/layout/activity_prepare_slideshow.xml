@@ -1,10 +1,9 @@
-<RelativeLayout
+<LinearLayout
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical">
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/ab_capture_image_from_video"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.appcompat.widget.Toolbar
@@ -14,53 +13,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:id="@+id/imv_capture_image_from_video_back"
+                    android:id="@+id/imv_making_slideshow_back"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_back"
                     android:layout_centerVertical="true">
                 </ImageView>
                 <TextView
-                    android:layout_toEndOf="@id/imv_capture_image_from_video_back"
+                    android:layout_toEndOf="@id/imv_making_slideshow_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:text="@string/capture_images_from_video"
+                    android:text="@string/choose_images"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="20dp"
                     android:textSize="20sp">
                 </TextView>
                 <ImageView
-                    android:id="@+id/imv_save"
+                    android:id="@+id/imv_slide_show_add"
+                    android:layout_marginEnd="20dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_save"
-                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/ic_plus"
                     android:visibility="gone">
                 </ImageView>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_capture_type"
-        android:layout_alignParentBottom="true"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_slideshow_images_folders"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="2dp">
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tl_capture_type"
-            android:layout_below="@+id/ab_capture_image_from_video"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-        </com.google.android.material.tabs.TabLayout>
-    </androidx.cardview.widget.CardView>
-    <androidx.viewpager.widget.ViewPager
-        android:layout_below="@id/ab_capture_image_from_video"
-        android:id="@+id/vp_capture_image_from_video"
+        android:text="@string/images"
+        android:textColor="@color/black">
+    </TextView>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp">
-    </androidx.viewpager.widget.ViewPager>
-</RelativeLayout>
+        android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_slideshow_images_from_folder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+        </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_slideshow_selected_images"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+</LinearLayout>

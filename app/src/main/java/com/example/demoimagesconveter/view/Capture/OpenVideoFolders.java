@@ -19,8 +19,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.example.demoimagesconveter.R;
 import com.example.demoimagesconveter.adapter.FolderAdapter;
 import com.example.demoimagesconveter.common.BaseActivity;
-import com.example.demoimagesconveter.model.modelFolder;
-import com.example.demoimagesconveter.view.MainActivity;
+import com.example.demoimagesconveter.model.ModelFolder;
 
 import java.util.ArrayList;
 
@@ -29,7 +28,7 @@ public class OpenVideoFolders extends BaseActivity implements FolderAdapter.onFo
     public static final int REQUEST_CODE_OPEN_GALLERY = 5;
     ImageView imvBack;
     RecyclerView rvGalleries;
-    private final ArrayList<modelFolder> videoFolders = new ArrayList<>();
+    private final ArrayList<ModelFolder> videoFolders = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +39,7 @@ public class OpenVideoFolders extends BaseActivity implements FolderAdapter.onFo
     }
 
     private void registerevent() {
-        imvBack.setOnClickListener(view -> {
-            Intent intent = new Intent(OpenVideoFolders.this, MainActivity.class);
-            startActivity(intent);
-        });
+        imvBack.setOnClickListener(view -> finish());
     }
 
     private void init() {
@@ -79,7 +75,7 @@ public class OpenVideoFolders extends BaseActivity implements FolderAdapter.onFo
         try {
             cursor.moveToFirst();
             do {
-                modelFolder fold = new modelFolder();
+                ModelFolder fold = new ModelFolder();
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DISPLAY_NAME));
                 String folder = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.BUCKET_DISPLAY_NAME));
                 String datapath = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA));

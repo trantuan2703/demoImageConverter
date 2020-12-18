@@ -1,5 +1,8 @@
 package com.example.demoimagesconveter.adapter;
 
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.demoimagesconveter.R;
-import com.example.demoimagesconveter.model.modelVideo;
+import com.example.demoimagesconveter.model.ModelVideo;
 
 import java.util.ArrayList;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
-    private final ArrayList<modelVideo> videos;
+    private final ArrayList<ModelVideo> videos;
     private final onVideoClickListener clickListener;
 
-    public VideoAdapter(ArrayList<modelVideo> videos, onVideoClickListener clickListener) {
+    public VideoAdapter(ArrayList<ModelVideo> videos, onVideoClickListener clickListener) {
         this.videos = videos;
         this.clickListener = clickListener;
     }
@@ -50,37 +53,15 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             imvThumb=itemView.findViewById(R.id.imv_item_video_thumb);
             tvTitle=itemView.findViewById(R.id.tv_item_video_title);
             tvDuration=itemView.findViewById(R.id.tv_item_video_duration);
-
             itemView.setOnClickListener(view -> clickListener.onClick(pos));
         }
 
         public void bindView(int pos){
             this.pos=pos;
             tvTitle.setText(videos.get(pos).getTitle());
-            Glide.with(itemView.getContext()).load(videos.get(pos).getThumbNail()).into(imvThumb);
-            tvDuration.setText(DisplayDuration(videos.get(pos).getDuration()));
-        }
-        private String DisplayDuration(String duration) {
-            int sec = Integer.parseInt(duration)/1000;
-            String dispSec="";
-            String dispMin="";
-            if (sec<10){
-                dispMin="00";
-                dispSec="0"+sec;
-            }else if(sec<60){
-                dispMin="00";
-                dispSec=""+sec;
-            }else{
-                int min = sec/60;
-                sec%=60;
-                if (min<10){
-                    dispMin="0"+min;
-                }
-                if (sec<10){
-                    dispSec="0"+sec;
-                }
-            }
-            return dispMin+":"+dispSec;
+            Bitmap thumb = ThumbnailUtils.createVideoThumbnail(String.valueOf((videos.get(pos)).getPath()), MediaStore.Images.Thumbnails.MINI_KIND);
+            Glide.with(itemView.getContext()).load(thumb).into(imvThumb);
+            tvDuration.setText(videos.get(pos).getShowDuration());
         }
     }
     public interface onVideoClickListener{

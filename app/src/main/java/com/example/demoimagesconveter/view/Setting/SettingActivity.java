@@ -166,6 +166,7 @@ public class SettingActivity extends BaseActivity {
         tvFileFormat=findViewById(R.id.tv_setting_file_format);
         tvQuality = findViewById(R.id.tv_setting_quality);
         tvSize = findViewById(R.id.tv_setting_size);
+
         preferences = getApplicationContext().getSharedPreferences(KEY_SHARED_PREFERENCE, MODE_PRIVATE);
         yourTypeFormat=preferences.getString(KEY_SHARED_PREFERENCE_TYPE_FORMAT,"JPEG");
         yourQuality =preferences.getString(KEY_SHARED_PREFERENCE_QUALITY,"High");

@@ -1,12 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.Capture.AutomaticallyFragment">
-    <TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+    <FrameLayout
+        android:id="@+id/fr_videoview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/Automatically" />
-
-</FrameLayout>
+        android:layout_height="wrap_content">
+        <VideoView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/vv_automatically_captured_video"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+        </VideoView>
+        <ImageView
+            android:id="@+id/imv_automatical_capture_play"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_play"
+            android:contentDescription="@string/pause_and_play_button">
+        </ImageView>
+    </FrameLayout>
+    <TextView
+        android:id="@+id/tv_auto_cap_title"
+        android:layout_marginTop="10dp"
+        android:text="@string/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black">
+    </TextView>
+</LinearLayout>

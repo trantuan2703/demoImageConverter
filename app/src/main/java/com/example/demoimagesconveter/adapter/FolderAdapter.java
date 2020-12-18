@@ -9,18 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.demoimagesconveter.R;
-import com.example.demoimagesconveter.model.modelFolder;
+import com.example.demoimagesconveter.model.ModelFolder;
 
 import java.io.File;
 import java.util.ArrayList;
 
 public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder> {
 
-    private final ArrayList<modelFolder> modelFolders;
+    private final ArrayList<ModelFolder> ModelFolders;
     private final onFolderClickListener clickListener;
 
-    public FolderAdapter(ArrayList<modelFolder> modelFolders, onFolderClickListener clickListener) {
-        this.modelFolders = modelFolders;
+    public FolderAdapter(ArrayList<ModelFolder> ModelFolders, onFolderClickListener clickListener) {
+        this.ModelFolders = ModelFolders;
         this.clickListener = clickListener;
     }
 
@@ -38,7 +38,7 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return modelFolders.size();
+        return ModelFolders.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -52,9 +52,9 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
         }
         public void bindView(int pos){
             this.pos=pos;
-            File path = new File(modelFolders.get(pos).getPath());
+            File path = new File(ModelFolders.get(pos).getPath());
             File[] files = path.listFiles();
-            String name=modelFolders.get(pos).getName()+"("+files.length+")";
+            String name= ModelFolders.get(pos).getName()+"("+files.length+")";
             tvName.setText(name);
         }
     }
