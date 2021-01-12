@@ -54,10 +54,14 @@ public class ImageFolderAdapter extends RecyclerView.Adapter<ImageFolderAdapter.
             this.pos=pos;
             File path = new File(ModelFolders.get(pos).getPath());
             File[] files = path.listFiles();
-            if (files!=null){
-                String name= ModelFolders.get(pos).getName()+"("+files.length+")";
-                tvName.setText(name);
+            ArrayList<File> imagesFiles = new ArrayList<>();
+            for (File file: files){
+                if (file.getName().endsWith(".jpeg")||file.getName().endsWith(".png")||file.getName().endsWith(".jpg")){
+                    imagesFiles.add(file);
+                }
             }
+            String name= ModelFolders.get(pos).getName()+"("+imagesFiles.size()+")";
+            tvName.setText(name);
         }
     }
     public interface onImageFolderClickListener{

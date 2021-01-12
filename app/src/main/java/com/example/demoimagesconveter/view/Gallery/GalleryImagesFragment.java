@@ -32,7 +32,6 @@ public class GalleryImagesFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_gallery_images, container, false);
     }
 
@@ -49,6 +48,7 @@ public class GalleryImagesFragment extends BaseFragment {
 
     private void init(View view) {
         getImages();
+        
     }
 
     private void getImages() {
@@ -65,7 +65,6 @@ public class GalleryImagesFragment extends BaseFragment {
                     images.add(image);
                 }
             }
-            showToast(""+images.size());
         }
     }
 }

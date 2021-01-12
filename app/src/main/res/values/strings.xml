@@ -42,4 +42,14 @@
     <string name="your_capptured_photo">Your Capptured Photo</string>
     <string name="choose_images">Choose Images</string>
     <string name="images">Images</string>
+    <string name="add_images">Add Images</string>
+    <string name="sldie_sec">Sldie/sec</string>
+    <string name="enter_duration">Enter Duration</string>
+    <string name="sec_per_image">Sec/Image</string>
+    <string name="_2">2</string>
+    <string name="add_music">Add music</string>
+    <string name="progressing_please_wait">Progressing.Please Wait</string>
+    <string name="title_activity_add_audioctivity">AddAudioctivity</string>
+    <string name="add_audio">Add Audio</string>
+    <string name="back_to_slideshow_to_add_music">back to slideshow to add music</string>
 </resources>

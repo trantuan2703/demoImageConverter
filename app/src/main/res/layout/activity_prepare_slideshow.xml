@@ -13,14 +13,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:id="@+id/imv_making_slideshow_back"
+                    android:id="@+id/imv_prepare_slideshow_back"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_back"
                     android:layout_centerVertical="true">
                 </ImageView>
                 <TextView
-                    android:layout_toEndOf="@id/imv_making_slideshow_back"
+                    android:layout_toEndOf="@id/imv_prepare_slideshow_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
@@ -30,7 +30,7 @@
                     android:textSize="20sp">
                 </TextView>
                 <ImageView
-                    android:id="@+id/imv_slide_show_add"
+                    android:id="@+id/imv_prepare_slideshow_add"
                     android:layout_marginEnd="20dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"

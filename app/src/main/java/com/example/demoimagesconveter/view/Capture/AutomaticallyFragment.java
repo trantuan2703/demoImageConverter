@@ -39,6 +39,20 @@ public class AutomaticallyFragment extends BaseFragment {
         fetchVideo();
         registerevent();
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d("STATUS_AUTO_FRAGMENT","pause");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("STATUS_AUTO_FRAGMENT","resume");
+    }
+
+
     private void registerevent() {
         videoView.setVideoPath(modelVideo.getPath());
         tvTitle.setText(modelVideo.getTitle().substring(0,modelVideo.getTitle().length()-4));

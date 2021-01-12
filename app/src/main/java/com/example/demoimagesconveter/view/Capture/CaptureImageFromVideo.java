@@ -29,9 +29,6 @@ public class CaptureImageFromVideo extends BaseActivity{
         registerevent();
     }
 
-    //    public ModelVideo sendVideoToFragment() {
-//        return modelVideo;
-//    }
     public ModelVideo getVideoFromActivity(){
         return modelVideo;
     }
@@ -50,6 +47,8 @@ public class CaptureImageFromVideo extends BaseActivity{
         setUpFragment();
     }
 
+
+
     private void setUpFragment() {
         imageCaptureScreenAdapter = new ImageCaptureScreenAdapter(getSupportFragmentManager());
         QuickCaptureFragment quickCaptureFragment = new QuickCaptureFragment();
@@ -62,29 +61,6 @@ public class CaptureImageFromVideo extends BaseActivity{
 
         Objects.requireNonNull(tlImageCaptureScreen.getTabAt(0)).setText("Quick");
         Objects.requireNonNull(tlImageCaptureScreen.getTabAt(1)).setText("Automatically");
-        //new one should use
-//        vpImageCaptureScreen.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                Log.e("TEST", "onPageSelected " + position);
-//                switch (position){
-//                    case 0:
-//                        break;
-//                    case 1:
-//                        quickCaptureFragment.startVideo(false);
-//                        automaticallyFragment.startVideo();
-//                        break;
-//                }
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//            }
-//        });
         vpImageCaptureScreen.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -111,4 +87,6 @@ public class CaptureImageFromVideo extends BaseActivity{
             }
         });
     }
+
+
 }

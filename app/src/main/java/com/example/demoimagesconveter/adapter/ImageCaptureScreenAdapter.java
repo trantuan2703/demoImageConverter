@@ -3,15 +3,12 @@ package com.example.demoimagesconveter.adapter;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-
-import com.example.demoimagesconveter.view.Capture.AutomaticallyFragment;
-import com.example.demoimagesconveter.view.Capture.QuickCaptureFragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImageCaptureScreenAdapter extends FragmentPagerAdapter {
+public class ImageCaptureScreenAdapter extends FragmentStatePagerAdapter {
 
     List<Fragment> fragments;
 
@@ -34,4 +31,6 @@ public class ImageCaptureScreenAdapter extends FragmentPagerAdapter {
     public void add(Fragment f){
         fragments.add(f);
     }
+
+
 }

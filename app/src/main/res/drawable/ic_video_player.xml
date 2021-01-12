@@ -8,7 +8,7 @@
     tools:ignore="VectorRaster">
   <path
       android:pathData="m476,38.834h-440a26.03,26.03 0,0 0,-26 26v297.626a26.029,26.029 0,0 0,26 26h440a26.029,26.029 0,0 0,26 -26v-297.626a26.03,26.03 0,0 0,-26 -26zM490,362.46a14.015,14.015 0,0 1,-14 14h-440a14.015,14.015 0,0 1,-14 -14v-297.626a14.016,14.016 0,0 1,14 -14h440a14.016,14.016 0,0 1,14 14z">
-    <aapt:attr name="android:fillColor">
+      <aapt:attr name="android:fillColor">
       <gradient
           android:startY="487"
           android:startX="256"

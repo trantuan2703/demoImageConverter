@@ -25,7 +25,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.demoimagesconveter.R;
-import com.example.demoimagesconveter.adapter.FrameAdapter;
 import com.example.demoimagesconveter.adapter.SelectedFrameAdapter;
 import com.example.demoimagesconveter.common.BaseFragment;
 import com.example.demoimagesconveter.model.ModelFrame;
@@ -70,6 +69,19 @@ public class QuickCaptureFragment extends BaseFragment implements SelectedFrameA
         init(view);
         fetchview();
         registerevent();
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d("STATUS_QUICK_FRAGMET","pause");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("STATUS_QUICK_FRAGMET","resume");
     }
 
     @SuppressLint("ClickableViewAccessibility")

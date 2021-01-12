@@ -1,15 +1,21 @@
 package com.example.demoimagesconveter.view.SldieShow;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -31,6 +37,7 @@ public class PrepareSlideshowActivity extends BaseActivity implements ImageFolde
                                                                 FrameAdapter.onFrameClickListener,
                                                                  SelectedFrameAdapter.onSelectedFrameClickListner{
 
+    public static final int REQUEST_CODE_OPEN_IMAGES_FOLDER = 47;
     ImageView imvBack,imvAdd;
     private ArrayList<ModelFolder> folders = new ArrayList<>();
     private final ArrayList<ModelFrame> selectedImages = new ArrayList<>();
@@ -47,6 +54,7 @@ public class PrepareSlideshowActivity extends BaseActivity implements ImageFolde
 
     private void registerevent() {
         imvBack.setOnClickListener(view -> finish());
+
         imvAdd.setOnClickListener(view -> {
             Intent intent = new Intent(PrepareSlideshowActivity.this,SlideshowActivity.class);
             ArrayList<String> paths = new ArrayList<>();
@@ -59,13 +67,32 @@ public class PrepareSlideshowActivity extends BaseActivity implements ImageFolde
     }
 
     private void init() {
-        imvBack = findViewById(R.id.imv_making_slideshow_back);
+        imvBack = findViewById(R.id.imv_prepare_slideshow_back);
         rvImagesFolder = findViewById(R.id.rv_slideshow_images_folders);
         rvImages = findViewById(R.id.rv_slideshow_images_from_folder);
         rvSelectedImages = findViewById(R.id.rv_slideshow_selected_images);
-        imvAdd = findViewById(R.id.imv_slide_show_add);
+        imvAdd = findViewById(R.id.imv_prepare_slideshow_add);
+        String[] permissionOpenGallery = {Manifest.permission.READ_EXTERNAL_STORAGE};
+        if (checkPermission(PrepareSlideshowActivity.this, permissionOpenGallery)) {
+            getFile();
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(permissionOpenGallery, REQUEST_CODE_OPEN_IMAGES_FOLDER);
+            }
+        }
         getFile();
         fetchView();
+    }
+
+    private boolean checkPermission(Context context, String[] permissions) {
+        if (context != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private void fetchView() {
@@ -123,14 +150,13 @@ public class PrepareSlideshowActivity extends BaseActivity implements ImageFolde
         File[] files = dir.listFiles();
         if (files!=null){
             for (File file: files){
-                ModelFrame frame = new ModelFrame();
-                frame.setPath(file.getAbsolutePath());
-                frame.setFrame(BitmapFactory.decodeFile(file.getAbsolutePath()));
-                images.add(frame);
+                if (file.getName().endsWith(".jpeg")||file.getName().endsWith(".png")||file.getName().endsWith(".jpg")){
+                    ModelFrame frame = new ModelFrame();
+                    frame.setPath(file.getAbsolutePath());
+                    frame.setFrame(BitmapFactory.decodeFile(file.getAbsolutePath()));
+                    images.add(frame);
+                }
             }
-        }
-        for (int i = 0; i < images.size(); i++) {
-            Log.d("GET_IMAGES_FRM_FOLDER","path: "+images.get(i).getPath()+"-bitmap: "+images.get(i).getFrame().toString());
         }
         FrameAdapter frameAdapter = new FrameAdapter(images,this);
         rvImages.setAdapter(frameAdapter);
@@ -161,5 +187,20 @@ public class PrepareSlideshowActivity extends BaseActivity implements ImageFolde
     public void onDeleteClick(int pos) {
         selectedImages.remove(selectedImages.get(pos));
         fetchSelectedImage();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE_OPEN_IMAGES_FOLDER) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                showtoast("Permission granted");
+                getFile();
+            } else {
+                showtoast("Permission denied");
+            }
+        } else {
+            showtoast("Permission denied");
+        }
     }
 }
