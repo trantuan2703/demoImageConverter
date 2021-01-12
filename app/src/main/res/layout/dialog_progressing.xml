@@ -1,0 +1,20 @@
+<LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="300dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/progressing_please_wait"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal">
+    </TextView>
+    <ImageView
+        android:id="@+id/imv_progress"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+    </ImageView>
+</LinearLayout>
