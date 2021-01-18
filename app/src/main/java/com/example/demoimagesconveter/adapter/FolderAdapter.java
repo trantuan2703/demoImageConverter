@@ -51,15 +51,6 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
         }
         public void bindView(int pos){
             this.pos=pos;
-//            File path = new File(ModelFolders.get(pos).getPath());
-//            File[] files = path.listFiles();
-//            ArrayList<File> imagesFiles = new ArrayList<>();
-//            for (File file: files){
-//                if (file.getName().endsWith(".jpeg")||file.getName().endsWith(".png")||file.getName().endsWith(".jpg")){
-//                    imagesFiles.add(file);
-//                }
-//            }
-//            String name= ModelFolders.get(pos).getName()+"("+imagesFiles.size()+")";
             tvName.setText(ModelFolders.get(pos).getName());
         }
     }

@@ -24,10 +24,6 @@ public class FrameAdapter extends RecyclerView.Adapter<FrameAdapter.ViewHolder> 
         this.clickListener = clickListener;
     }
 
-    public FrameAdapter(ArrayList<ModelFrame> frames) {
-        this.frames = frames;
-    }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

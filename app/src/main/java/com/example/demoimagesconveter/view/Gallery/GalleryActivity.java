@@ -13,7 +13,6 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.Objects;
 
 public class GalleryActivity extends AppCompatActivity {
-
     TabLayout tlGallery;
     ViewPager vpGallery;
     ImageView imvBack;

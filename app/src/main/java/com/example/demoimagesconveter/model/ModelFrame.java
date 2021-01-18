@@ -9,7 +9,7 @@ public class ModelFrame implements Serializable {
     private String date;
     private Bitmap frame;
     private String path;
-
+    private boolean isSelected;
     public ModelFrame() {
     }
 
@@ -49,5 +49,13 @@ public class ModelFrame implements Serializable {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }

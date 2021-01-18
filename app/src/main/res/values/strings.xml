@@ -52,4 +52,12 @@
     <string name="title_activity_add_audioctivity">AddAudioctivity</string>
     <string name="add_audio">Add Audio</string>
     <string name="back_to_slideshow_to_add_music">back to slideshow to add music</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="information">Information</string>
+    <string name="share">Share</string>
+    <string name="delete">Delete</string>
+    <string name="dir">dir</string>
+    <string name="open_more_option">Open More Option</string>
+    <string name="Remane">Rename</string>
+    <string name="do_you_want_to_delete_this">Do you want to delete this ?</string>
 </resources>

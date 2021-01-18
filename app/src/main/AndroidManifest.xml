@@ -7,13 +7,16 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoImagesConveter">
-        <activity android:name=".view.SldieShow.AddAudioActivity"></activity>
+        <activity android:name=".view.Gallery.EditImageActivity"></activity>
+        <activity android:name=".view.SldieShow.AddAudioActivity" />
         <activity android:name=".view.SldieShow.SlideshowActivity" />
         <activity android:name=".view.SldieShow.PrepareSlideshowActivity" />
         <activity android:name=".view.Gallery.GalleryActivity" />
@@ -22,7 +25,8 @@
         <activity android:name=".view.Capture.ChooseVideoActivity" />
         <activity android:name=".view.Capture.OpenVideoFolders" />
         <activity android:name=".view.MainActivity">
-<!--            main intent filter-->
+
+            <!-- main intent filter -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
