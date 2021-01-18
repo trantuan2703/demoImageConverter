@@ -1,0 +1,35 @@
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+    <TextView
+        android:layout_margin="15dp"
+        android:text="@string/information"
+        android:textSize="20sp"
+        android:textColor="@color/blue_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+    <TextView
+        android:layout_margin="15dp"
+        android:id="@+id/tv_dialog_info_dir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dir">
+    </TextView>
+    <TextView
+        android:layout_margin="15dp"
+        android:id="@+id/tv_dialog_info_capacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Size">
+    </TextView>
+    <TextView
+        android:layout_margin="15dp"
+        android:id="@+id/tv_dialog_info_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Size">
+    </TextView>
+</LinearLayout>
