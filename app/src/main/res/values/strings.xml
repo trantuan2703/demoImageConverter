@@ -60,4 +60,13 @@
     <string name="open_more_option">Open More Option</string>
     <string name="Remane">Rename</string>
     <string name="do_you_want_to_delete_this">Do you want to delete this ?</string>
+    <string name="todo">TODO</string>
+    <string name="crop">Crop</string>
+    <string name="back">Back</string>
+    <string name="crop_image">Crop Image</string>
+    <string name="do_you_want_to_save_this">Do you want to save this?</string>
+    <string name="text">Text</string>
+    <string name="done">Done</string>
+    <string name="brush">Brush</string>
+    <string name="sticker">Sticker</string>
 </resources>

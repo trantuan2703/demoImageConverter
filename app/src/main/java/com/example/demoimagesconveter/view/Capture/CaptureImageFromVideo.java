@@ -72,11 +72,13 @@ public class CaptureImageFromVideo extends BaseActivity{
                 switch (position){
                     case 0:
                         automaticallyFragment.videoView.pause();
-                        quickCaptureFragment.videoViewQuickCapture.start();
+                        automaticallyFragment.videoView.stopPlayback();
+                        quickCaptureFragment.resumeFragment();
                         break;
                     case 1:
                         quickCaptureFragment.videoViewQuickCapture.pause();
-                        automaticallyFragment.videoView.start();
+                        quickCaptureFragment.videoViewQuickCapture.stopPlayback();
+                        automaticallyFragment.resumeFragment();
                         break;
                 }
             }

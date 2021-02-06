@@ -32,7 +32,6 @@ public class AddAudioActivity extends BaseActivity implements AudioAdapter.onIte
     AudioAdapter audioAdapter;
     MediaPlayer mediaPlayer;
     TextView tvSsLength,tvMin,tvMax;
-    private int slideshowLength;
     private String track;
 
     @Override
@@ -64,8 +63,8 @@ public class AddAudioActivity extends BaseActivity implements AudioAdapter.onIte
         for (int i = 0; i < audios.size(); i++) {
             Log.d("TEST", audios.get(i).getTitle()+"-"+ audios.get(i).getPath()+"-"+ audios.get(i).getDuration());
         }
-        slideshowLength = getIntent().getIntExtra(KEY_SEND_SECOND_PER_IMAGE,2)+1;
-        String length = "Your slide show length is: "+slideshowLength+" seconds";
+        int slideshowLength = getIntent().getIntExtra(KEY_SEND_SECOND_PER_IMAGE, 2) + 1;
+        String length = "Your slide show length is: "+ slideshowLength +" seconds";
         tvSsLength.setText(length);
     }
 

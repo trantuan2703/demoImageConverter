@@ -53,10 +53,14 @@ public class AutomaticallyFragment extends BaseFragment {
     }
 
 
-    private void registerevent() {
+    public void resumeFragment(){
         videoView.setVideoPath(modelVideo.getPath());
         tvTitle.setText(modelVideo.getTitle().substring(0,modelVideo.getTitle().length()-4));
         videoView.start();
+    }
+
+    public void registerevent() {
+
     }
     private void fetchVideo() {
         Log.d("TEST", "AutomaticallyFragment " + modelVideo);

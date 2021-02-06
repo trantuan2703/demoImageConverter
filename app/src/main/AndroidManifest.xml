@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoImagesConveter">
-        <activity android:name=".view.Gallery.EditImageActivity"></activity>
+        <activity android:name=".view.Gallery.EditImageActivity" />
         <activity android:name=".view.SldieShow.AddAudioActivity" />
         <activity android:name=".view.SldieShow.SlideshowActivity" />
         <activity android:name=".view.SldieShow.PrepareSlideshowActivity" />
@@ -24,8 +24,11 @@
         <activity android:name=".view.Capture.CaptureImageFromVideo" />
         <activity android:name=".view.Capture.ChooseVideoActivity" />
         <activity android:name=".view.Capture.OpenVideoFolders" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".view.MainActivity">
-
             <!-- main intent filter -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

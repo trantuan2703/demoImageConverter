@@ -52,6 +52,7 @@ public class QuickCaptureFragment extends BaseFragment implements SelectedFrameA
     ArrayList<ModelFrame> frames = new ArrayList<>();
     boolean isPlayVideo = false;
     ModelVideo modelVideo;
+
     public QuickCaptureFragment() {
         // Required empty public constructor
     }
@@ -84,8 +85,9 @@ public class QuickCaptureFragment extends BaseFragment implements SelectedFrameA
         Log.d("STATUS_QUICK_FRAGMET","resume");
     }
 
+
     @SuppressLint("ClickableViewAccessibility")
-    private void registerevent() {
+    public void registerevent() {
         videoViewQuickCapture.setOnTouchListener((view, motionEvent) -> {
             startVideo(!videoViewQuickCapture.isPlaying());
             Log.e("TAP", "from video " + videoViewQuickCapture.getCurrentPosition());
@@ -158,6 +160,11 @@ public class QuickCaptureFragment extends BaseFragment implements SelectedFrameA
             imvPlay.setVisibility(View.VISIBLE);
             sbVideo.removeCallbacks(onEverySecond);//important line
         }
+    }
+
+    public void releaseVideo(){
+        startVideo(false);
+        videoViewQuickCapture.stopPlayback();
     }
 
     public void saveImage(Bitmap bitmap, String name) {
@@ -238,5 +245,11 @@ public class QuickCaptureFragment extends BaseFragment implements SelectedFrameA
     public void onDeleteClick(int pos) {
         frames.remove(frames.get(pos));
         fetchCapturedFrame();
+    }
+
+    public void resumeFragment() {
+        videoViewQuickCapture.setVideoPath(modelVideo.getPath());
+        tvTitle.setText(modelVideo.getTitle().substring(0,modelVideo.getTitle().length()-4));
+        videoViewQuickCapture.start();
     }
 }
