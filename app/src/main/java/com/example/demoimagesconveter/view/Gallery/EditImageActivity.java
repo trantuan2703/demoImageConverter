@@ -13,13 +13,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.demoimagesconveter.R;
+import com.example.demoimagesconveter.adapter.ColorPickerAdapter;
 import com.example.demoimagesconveter.common.BaseActivity;
 import com.example.demoimagesconveter.dialogfragment.AddStickerFragment;
 import com.example.demoimagesconveter.dialogfragment.AddTextFragment;
@@ -41,20 +45,24 @@ import ja.burhanrashid52.photoeditor.SaveSettings;
 import ja.burhanrashid52.photoeditor.TextStyleBuilder;
 
 public class EditImageActivity extends BaseActivity implements UCropFragmentCallback,
-        AddTextFragment.AddTextEditor {
+        AddTextFragment.AddTextEditor,
+        AddStickerFragment.AddStickerEditor,
+        ColorPickerAdapter.onColorPicker{
     public static final String KEY_GET_IMAGE_PATH = "KEY_GET_IMAGE_PATH";
     UCropView uCropView;
     ImageView imvBack, imvEdited, imvMenu, imvSave;
     String path;
     TextView tvCrop, tvAddText,tvBrush,tvSticker;
-    LinearLayout llBottomBar;
+    LinearLayout llBottomBar,llBrushBar;
     TextView tvTitle;
     AppBarLayout abEdited;
     UCropFragment uCropFragment;
     PhotoEditorView photoEditorView;
     PhotoEditor photoEditor;
     String type;
-
+    RecyclerView rvBrushColorPicker;
+    SeekBar sbSize,sbCapacity;
+    int sizePos, opacityPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,10 +106,52 @@ public class EditImageActivity extends BaseActivity implements UCropFragmentCall
             addStickerFragment.setArguments(bundle);
             addStickerFragment.show(getSupportFragmentManager(),AddStickerFragment.TAG);
         });
+        tvBrush.setOnClickListener(v -> handleBrush());
     }
 
     private void handleBrush() {
+        llBrushBar.setVisibility(View.VISIBLE);
+        llBottomBar.setVisibility(View.GONE);
+        ColorPickerAdapter colorPickerAdapter = new ColorPickerAdapter(this,this);
+        rvBrushColorPicker.setAdapter(colorPickerAdapter);
+        rvBrushColorPicker.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
 
+        sbSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser){
+                    sizePos = progress;
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        sbCapacity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser){
+                    opacityPos =progress;
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     private void handleCropView() {
@@ -194,6 +244,10 @@ public class EditImageActivity extends BaseActivity implements UCropFragmentCall
         tvAddText = findViewById(R.id.tv_add_text);
         tvBrush = findViewById(R.id.tv_brush);
         tvSticker = findViewById(R.id.tv_sticker);
+        llBrushBar = findViewById(R.id.ll_brush_tool_bottom);
+        rvBrushColorPicker = findViewById(R.id.rv_brush_color_picker);
+        sbSize = findViewById(R.id.sb_brush_size);
+        sbCapacity = findViewById(R.id.sb_brush_capacity);
 
         photoEditorView = findViewById(R.id.photoEditorView);
         photoEditorView.getSource().setImageBitmap(BitmapFactory.decodeFile(path));
@@ -264,7 +318,7 @@ public class EditImageActivity extends BaseActivity implements UCropFragmentCall
     }
 
     @Override
-    public void onDone(String inputText, int colorCode) {
+    public void onTextDone(String inputText, int colorCode) {
         final TextStyleBuilder styleBuilder = new TextStyleBuilder();
         styleBuilder.withTextColor(colorCode);
         photoEditor.addText(inputText, styleBuilder);
@@ -307,4 +361,29 @@ public class EditImageActivity extends BaseActivity implements UCropFragmentCall
         });
     }
 
+    @Override
+    public void onStickerDone(String s) {
+        photoEditor.addEmoji(s);
+        imvMenu.setVisibility(View.GONE);
+        imvSave.setVisibility(View.VISIBLE);
+        imvSave.setOnClickListener(v ->{
+            showtoast("Saving");
+            saveEditedImage();
+        });
+    }
+
+    @Override
+    public void onColorPickerListener(int pos) {
+        llBrushBar.setVisibility(View.GONE);
+        llBottomBar.setVisibility(View.VISIBLE);
+        photoEditor.setBrushDrawingMode(true);
+        photoEditor.setBrushColor(pos);
+        photoEditor.setOpacity(opacityPos);
+        imvMenu.setVisibility(View.GONE);
+        imvSave.setVisibility(View.VISIBLE);
+        imvSave.setOnClickListener(v -> {
+            showtoast("Saving");
+            saveEditedImage();
+        });
+    }
 }

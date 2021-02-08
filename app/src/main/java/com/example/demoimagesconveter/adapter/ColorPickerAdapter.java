@@ -49,7 +49,7 @@ public class ColorPickerAdapter extends RecyclerView.Adapter<ColorPickerAdapter.
         public void bindview(int pos){
             this.pos = pos;
             view.setBackgroundColor(colorsList.get(pos));
-            view.setOnClickListener(v -> onColorPicker.onItemClickListener(colorsList.get(getAdapterPosition())));
+            view.setOnClickListener(v -> onColorPicker.onColorPickerListener(colorsList.get(getAdapterPosition())));
         }
     }
 
@@ -72,6 +72,6 @@ public class ColorPickerAdapter extends RecyclerView.Adapter<ColorPickerAdapter.
     }
 
     public interface onColorPicker{
-        void onItemClickListener(int pos);
+        void onColorPickerListener(int pos);
     }
 }

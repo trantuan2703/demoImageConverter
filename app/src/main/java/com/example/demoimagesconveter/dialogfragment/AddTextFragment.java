@@ -98,7 +98,7 @@ public class AddTextFragment extends DialogFragment implements ColorPickerAdapte
             Log.d("onDone","Add text: "+inputText+"-text color: "+passTextColor);
             dismiss();
             if (!TextUtils.isEmpty(inputText) && addTextEditor!=null){
-                addTextEditor.onDone(inputText,passTextColor);
+                addTextEditor.onTextDone(inputText,passTextColor);
                 Log.d("onDone","Add text: "+inputText+"-text color: "+passTextColor);
             }
         });
@@ -117,13 +117,13 @@ public class AddTextFragment extends DialogFragment implements ColorPickerAdapte
     }
 
     @Override
-    public void onItemClickListener(int pos) {
+    public void onColorPickerListener(int pos) {
         edtAdd.setTextColor(pos);
         passTextColor = pos;
     }
 
     public interface AddTextEditor {
-        void onDone(String inputText, int colorCode);
+        void onTextDone(String inputText, int colorCode);
     }
 
 }

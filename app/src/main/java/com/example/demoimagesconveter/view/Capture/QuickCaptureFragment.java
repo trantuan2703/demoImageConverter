@@ -162,10 +162,6 @@ public class QuickCaptureFragment extends BaseFragment implements SelectedFrameA
         }
     }
 
-    public void releaseVideo(){
-        startVideo(false);
-        videoViewQuickCapture.stopPlayback();
-    }
 
     public void saveImage(Bitmap bitmap, String name) {
         String root = Environment.getExternalStorageDirectory().getAbsolutePath();

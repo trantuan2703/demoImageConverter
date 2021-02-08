@@ -1,6 +1,7 @@
 package com.example.demoimagesconveter.dialogfragment;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,8 +24,15 @@ public class AddStickerFragment extends DialogFragment implements StickerAdapter
     public static final String KEY_GET_EMOJI ="KEY_GET_EMOJI";
     ArrayList<String> emojisList;
     RecyclerView rvSticker;
+    AddStickerEditor addStickerEditor;
 
     public AddStickerFragment() {
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        addStickerEditor = (AddStickerEditor) context;
     }
 
     @Override
@@ -75,5 +83,10 @@ public class AddStickerFragment extends DialogFragment implements StickerAdapter
 
     private void handleChooseSticker(String s) {
         dismiss();
+        addStickerEditor.onStickerDone(s);
+    }
+
+    public interface AddStickerEditor{
+        void onStickerDone(String s);
     }
 }
